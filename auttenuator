@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title> auttenuator_model </title>  
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" />
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-cHt/Wsnw4sAjjFtFIYrBXNFAWVbFbpJ1+8jWg7ERuCTgfHsIaMn0NB9BpIVqeNNc" src="https://lib.baomitu.com/echarts/3.8.5/echarts-en.common.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/xlsx/0.16.2/xlsx.core.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
+    <style>
+        b {
+            font-weight: 450;
+        }
+        
+        .chart {
+            width: 100%;
+            height: 250px;
+        }
+        
+        .tip-table td {
+            padding: 2px;
+            margin: 2px;
+            color: aliceblue;
+        }
+        
+        .event-table td,
+        .event-table th {
+            padding: 0px;
+        }
+    </style>
+    <style>
+        .multiselect-wrapper {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            text-align: left;
+            size: 4;
+        }
+        .dropdown-toggle:after {
+            content: none
+        }
+        
+        .multiselect-container>li>a>label>input[type='checkbox'] {
+            margin-top: 7px;
+        }
+        
+        .dropdown-menu>.active>a:hover {
+            background: #BEBEBE;
+        }
+        
+        .multiselect {
+            height: 30px
+        }
+        
+        .multiselect-wrapper label.checkbox,
+        .multiselect-wrapper label.radio {
+            padding: 3px 20px 3px 30px !important;
+            width: 100%;
+        }
+        .multiselect-selected-text{
+           font-size:13px;
+           font-family: '微软雅黑','宋体';
+           width:100%;
+       }
+        .caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 2px;
+            vertical-align: middle;
+            border-top: 5px solid;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="chart" id="main">
+            </div>
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI41(38544)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI41(38544)">
+                <h6>PCI41(38544)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI41(38544)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI41(38544)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI41(38544)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI41(38544)'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI42(38400)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI42(38400)">
+                <h6>PCI42(38400)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI42(38400)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI42(38400)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI42(38400)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI42(38400)'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI54(38400)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI54(38400)">
+                <h6>PCI54(38400)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI54(38400)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI54(38400)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI54(38400)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI54(38400)'))" /> 
+             
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI55(38544)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI55(38544)">
+                <h6>PCI55(38544)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI55(38544)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI55(38544)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI55(38544)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI55(38544)'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI56(38400)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI56(38400)">
+                <h6>PCI56(38400)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI56(38400)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI56(38400)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI56(38400)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI56(38400)'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI57(38544)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI57(38544)">
+                <h6>PCI57(38544)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI57(38544)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI57(38544)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI57(38544)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI57(38544)'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI61(1350)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI61(1350)">
+                <h6>PCI61(1350)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI61(1350)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI61(1350)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI61(1350)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI61(1350)'))" />  
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-PCI62(3600)">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="PCI62(3600)">
+                <h6>PCI62(3600)信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('PCI62(3600)'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('PCI62(3600)'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('PCI62(3600)'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('PCI62(3600)'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-GSM900">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="GSM900">
+                <h6>GSM900信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('GSM900'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('GSM900'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('GSM900'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('GSM900'))" /> 
+        </div>
+        <div class="container" style="width:100%;height:180px;overflow:auto; border: 1px solid black;" id="tab-GSM1800">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="GSM1800">
+                <h6>GSM1800信息表格</h6> 
+                <tr>  
+                    <td width="32"  bgcolor="#EFEFEF" ><input type="checkbox" name="checkbox" value="checkbox" disabled="disabled"/></td> 
+                    <td width="68" bgcolor="#EFEFEF" EditType="TextBox">序号</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">信道模型</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">初始信号</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">TIME</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">持续时间</td> 
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">参数</td>
+                    <td width="186" bgcolor="#EFEFEF" EditType="TextBox">Iteration</td>
+                  </tr> 
+            </table>
+            <input type="button"  value="全选" onclick="Select_All(document.getElementById('GSM1800'))" />
+            <input type="button"  value="新增" onclick="AddRow(document.getElementById('GSM1800'))" /> 
+            <input type="button"  value="删除" onclick="DeleteRow(document.getElementById('GSM1800'),1)" /> 
+            <input type="button"  value="编辑" onclick="Edit(document.getElementById('GSM1800'))" /> 
+        </div>
+        <div class="container" style="margin-top: 5px;">
+                <select  class="form-control" style="display:none;" id="profile_type" >
+                </select >
+                <select  class="form-control" style="display:none;" id="cell_id"  multiple="multiple">
+                </select >
+                <button class="btn btn-success my-2 btn-sm" onclick="window.location.reload()"> 重置</button>
+                <button class="btn btn-success my-2 btn-sm" onclick="download()">导出Txt</button>
+                <button class="btn btn-success my-2 btn-sm" onclick="exceport_mode()">导出模板</button>
+                <input id="fieldExcel" type="file" style="display:none;" onchange="jsReadFiles(this.files)"/>
+                <button class="btn btn-success my-2 btn-sm" type="button" onclick="$('#fieldExcel').click()">导入模板</button>
+                <!-- <input style="display:none;" type="file" onchange="jsReadFiles(this.files)"/> -->
+         </div>
+        <form class = "container" id="Triangle"> 
+        </form>
+        <form class = "container" id="Sinusoidal"> 
+        </form>
+        <form class = "container" id="Lognormal"> 
+        </form>
+        <script>
+        class optionRsrpModel{
+            constructor(){
+                this.title = {
+                                text: 'chart'
+                            };
+                this.legend = {
+                    type: 'scroll',
+                    data: []};
+                this.tooltip = {
+                    trigger: "axis",
+                    axisPointer: {
+                        type: 'cross'
+                    },
+                    position: function (point, params, dom, rect, size) {
+                        var x = 0; // x坐标位置
+                        var y = 0; // y坐标位置
+                        
+                        // 当前鼠标位置
+                        var pointX = point[0];
+                        var pointY = point[1];
+            
+                        // 提示框大小
+                        var boxWidth = size.contentSize[0];
+                        var boxHeight = size.contentSize[1];
+                        
+                        // boxWidth > pointX 说明鼠标左边放不下提示框
+                        if (boxWidth > pointX) {
+                            x = 5;
+                        } else { // 左边放的下
+                            x = pointX - boxWidth;
+                        }
+                        
+                        // boxHeight > pointY 说明鼠标上边放不下提示框
+                        if (boxHeight > pointY) {
+                            y = 5;
+                        } else { // 上边放得下
+                            y = pointY - boxHeight;
+                        }
+                        
+                        return [x, y];},
+                    formatter: function (params){
+                        // let text = "";
+                        let text = `Time: ${formatTime(params[0].axisValue)}</br>`
+                        // text += `Model: ${params[0].seriesName}</br>Rsrp: ${params[0].data[1]}</br>`
+                        for (let i=0; i< params.length;i++){
+                            text += `Model: ${params[i].seriesName}</br>Rsrp: ${params[i].data[1]}</br>`
+                        }
+                        return text
+                    }
+                };
+                this.dataZoom = [{
+                    show: true,
+                    realtime: true,
+                    start: 0,
+                    end: 100,
+                    },
+                    {
+                    type: 'inside',
+                    realtime: true,
+                    }
+                ];
+                this.xAxis = {
+                    type: 'value',
+                    name: 'time',
+                    axisLabel: {
+                        formatter: formatTime
+                    },
+                };
+                this.yAxis = {
+                    type: 'value',
+                    min: -50,
+                    max: -150,
+                    name: 'rsrp'
+                };
+                this.series = [];
+            }
+        };
+        class TrianglersrpModel {
+            constructor(data, name, type) {
+                this.data = data;
+                this.name = name;
+                this.type = type;
+                // this.smooth = smooth;
+                this.symbol = 'none'
+            }
+        };
+        class SinusoidalrsrpModel{
+            constructor(data, name, type){
+                this.data = data;
+                this.name = name;
+                this.type = type;
+                this.symbol = 'none';
+            }
+        };
+        class SawtoothrsrpModel{
+            constructor(data, name, type){
+                this.data = data;
+                this.name = name;
+                this.type = type;
+                this.symbol = 'none';
+                this.step = 'start';
+            }
+        }
+        var optionAttenuator = new optionRsrpModel()
+        var auttenuator_chart = echarts.init(document.getElementById('main'));
+        let init_option = {
+            title: {
+                text: 'chart'
+            },
+            xAxis: {
+                type: 'value',
+                // name: 'time',
+                axisLabel: {
+                    formatter: formatTime
+                },
+            },
+            yAxis: {
+                type: 'value',
+                min: -50,
+                max: -150,
+                name: 'rsrp'
+            },
+        };
+        auttenuator_chart.setOption(init_option);
+        var isCheckAll = true;
+        var ondropdown = true;
+        var cell_button = true;
+        var cell_id_list = [];
+        let cell_id = ["PCI41(38544)", "PCI42(38400)","PCI61(1350)","PCI55(38544)","PCI56(38400)","PCI57(38544)","PCI54(38400)","PCI62(3600)","GSM900","GSM1800"];           
+        for (i of cell_id){
+            document.getElementById(`tab-${i}`).style.display='none'
+        }
+        function Select_All(table){
+            if (isCheckAll) {  
+            $(table).find("input[type='checkbox']").each(function() {
+                if (!this.disabled){
+                    this.checked = false;  
+                }
+                });  
+                isCheckAll = false;  
+            } else {  
+                $(table).find("input[type='checkbox']").each(function() { 
+                    if (!this.disabled){
+                        this.checked = true; 
+                    } 
+                });  
+                isCheckAll = true;  
+            }  
+
+        }
+        function jsReadFiles(files) {
+            if (files.length) {
+                var file = files[0];
+                var reader = new FileReader();//new一个FileReader实例
+                if (/text+/.test(file.type)) {//判断文件类型，是不是text类型
+                    // reader.onload = function() {
+                    //     $('body').append('<pre>' + this.result + '</pre>');
+                    // }
+                    reader.readAsText(file);
+                } else if(/image+/.test(file.type)) {//判断文件是不是imgage类型
+                    // reader.onload = function() {
+                    //     $('body').append('<img src="' + this.result + '"/>');
+                    // }
+                    reader.readAsDataURL(file);
+                }
+            }
+            auttenuator_chart.clear();
+            seriers_data = (JSON.parse(reader.result))
+            optionAttenuator.series = [];
+            optionAttenuator.legend["data"] = [];
+            for (let i = 0; i <Object.keys(seriers_data).length;i++){
+                push_cell_model(Object.keys(seriers_data)[i]);
+            }
+        }
+        function exceport_mode(){
+            var time = new Date();
+            var filetime = `${time.getFullYear()}:${time.getMonth()}:${time.getDate()}:${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + (JSON.stringify(seriers_data)));
+            element.setAttribute('download', `auttenuator_mode_${filetime}`);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+        }
+        function download() {
+            var time = new Date();
+            var filetime = `${time.getFullYear()}:${time.getMonth()}:${time.getDate()}:${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+                var data = {
+                message: [
+                '# BTS Description Info',
+                // 'BTS: {"channels" : {"A1B1": "PCI41(38544)", "A3B1":"PCI42(38400)","A5B1":"PCI54(38400)","A7B1":"PCI55(38544)","A9B1":"PCI56(38400)","A11B1":"PCI57(38544)","A13B1":"PCI61(1350)","A15B1":"PCI62(3600)"}}',
+                // 'TIME,A1B1,A2B2,A3B1,A4B2,A5B1,A6B2,A7B1,A8B2,A9B1,A10B2,A11B1,A12B2,A13B1,A14B2,A15B1,A16B2',
+                ]
+            }
+            for (key of Object.keys(auttenuator_value)){
+                if(Object.keys(auttenuator_value[key]).length == 0 && key!="time"){
+                    delete auttenuator_value[key]
+                }
+            }
+
+            get_bts(data);
+            get_channels(data);
+            get_auttenuator_value(data);
+            var element = document.createElement('a');
+            var message = '';
+            for(var i = 0;i < data.message.length;i++){
+                message += data.message[i] + '\r\n';
+            }
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + (message));
+            element.setAttribute('download', `auttenuator_${filetime}`);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            }
+        function get_bts(data){
+            var bts = {"BTS":{"channels":{}}};
+            var bts_dict = {"A1B1": "PCI41(38544)", "A3B1":"PCI42(38400)","A5B1":"PCI54(38400)","A7B1":"PCI55(38544)","A9B1":"PCI56(38400)",
+            "A11B1":"PCI57(38544)","A13B1":"PCI61(1350)","A15B1":"PCI62(3600)","A1B1": "GSM900","A15B1":"GSM1800"}
+            for (key of Object.keys(auttenuator_value)){
+                if (key != "time"){
+                    get_dict_from_values(bts,bts_dict,key);
+                }
+            }
+            data["message"].push(JSON.stringify(bts));
+        }
+        function get_dict_from_values(bts,object,value){
+            bts["BTS"]["channels"][Object.keys(object).find(key => object[key] === value)]=value
+        }
+        function get_channels(data){
+            var title ="TIME,"
+            var chnanels_dict = {"PCI41(38544)":"A1B1,A2B2","PCI42(38400)":"A3B1,A4B2","PCI54(38400)":"A5B1,A6B2","PCI55(38544)":"A7B1,A8B2",
+            "PCI56(38400)":"A9B1,A10B2","PCI57(38544)":"A11B1,A12B2","PCI61(1350)":"A13B1,A14B2","PCI62(3600)":"A15B1,A16B2","GSM900":"A1B1","GSM1800":"A15B1"}
+            for (key of Object.keys(auttenuator_value)){
+                if (key != "time"){
+                    title+=chnanels_dict[key]+","
+                }
+            }
+           data["message"].push(title);
+        }
+
+        function get_auttenuator_value(data){
+            var rsrp_number = {};
+            for (key of Object.keys(auttenuator_value)){
+                if(key!= "time"){
+                    if (key.includes("GSM")){
+                        for(let i = 0; i< auttenuator_value[key].length;i++){
+                            if (!rsrp_number.hasOwnProperty(i)){
+                                rsrp_number[i]=`${(auttenuator_value["time"]).toString()},`
+                            }
+                            rsrp_number[i]+=`${auttenuator_value[key][i]},`
+                        }                      
+                    }else{
+                        for(let i = 0; i< auttenuator_value[key].length;i++){
+                            if (!rsrp_number.hasOwnProperty(i)){
+                                rsrp_number[i]=`${(auttenuator_value["time"]).toString()},`
+                            }
+                            rsrp_number[i]+=`${auttenuator_value[key][i]},${auttenuator_value[key][i]},`
+                        }
+                    }
+ 
+                }
+ 
+            }
+            for (let i=0; i < Object.keys(rsrp_number).length;i++){
+                data["message"].push(rsrp_number[i].slice(0,-1))
+            }
+        }
+        // function exportExcel(){
+        //     // Excel文件名称
+        //     var time = new Date();
+        //     var filetime = `${time.getFullYear()}:${time.getMonth()}:${time.getDate()}:${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+        //     var filename = `auttenuator_${filetime}.xlsx`;
+
+        //     var data = [["TIME","A1B1","A2B2"]]
+        //     for (let i = 0; i < optionAttenuator.series.length; i++){
+        //         for(let j=0; j < optionAttenuator.series[i].data.length; j++){
+        //             data.push([100,optionAttenuator.series[i].data[j][1],optionAttenuator.series[i].data[j][1]])
+        //         }
+        //     }            
+        //     // 创建工作簿和工作表
+        //     var wb = XLSX.utils.book_new(), // 工作簿，即一个Excel文件
+        //         ws = XLSX.utils.aoa_to_sheet(data); // 工作表，即Excel内部的工作表
+            
+        //     // "SheetJS" 为工作表名称，即Excel文件中工作表
+        //     XLSX.utils.book_append_sheet(wb, ws, "time_rsrp");
+
+        //     // 写出Excel工作簿
+        //     XLSX.writeFile(wb, filename)
+        // }
+        function formatTime(msTime) {
+            let ms = Math.floor(msTime % 1000);
+            let time = msTime / 1000;
+            let hour = Math.floor(time / 60 / 60);
+            hour = hour.toString().padStart(2, "0");
+            let minute = Math.floor(time / 60) % 60;
+            minute = minute.toString().padStart(2, "0");
+            let second = Math.floor(time) % 60;
+            second = second.toString().padStart(2, "0");
+            return `${hour}:${minute}:${second}.${ms}`;
+        }
+        function Edit(table){  
+            for(var i = 0; i < table.rows.length; i++){  
+                let chkOrder = table.rows[i].cells[0].firstChild; 
+                if(chkOrder){  
+                    if(chkOrder.type = "CHECKBOX"){  
+                        if(chkOrder.checked){  
+                            ModifyRow(table, i)
+                        } ; 
+                    };  
+                } ; 
+            } ;
+            auttenuator_chart.clear();
+            seriers_data[table.id] = {};
+            for (let i = 1; i < table.rows.length; i++){
+                if(table.rows[i].cells[1].innerHTML =! i-1){
+                    table.rows[i].cells[1].innerHTML = i-1;
+                }
+                let index = table.rows[i].cells[1].innerHTML;
+                let model = table.rows[i].cells[2].innerHTML;
+                let cell_initial_value = parseFloat(table.rows[i].cells[3].innerHTML);
+                let time = parseFloat(table.rows[i].cells[4].innerHTML);
+                let period_value = parseFloat(table.rows[i].cells[5].innerHTML);
+                let iteration = parseFloat(table.rows[i].cells[7].innerHTML);
+                if (["Triangle","Sawtooth"].includes(model)){
+                    let cell_end_value = parseFloat(table.rows[i].cells[6].innerHTML.split(":")[1]);
+                    Add_seriers(table.id,index, cell_initial_value, cell_end_value, time, period_value, model, iteration);
+                }else if (model == "Sinusoidal"){
+                    let amplitude = parseFloat(table.rows[i].cells[6].innerHTML.split(":")[1]);
+                    Add_Sinusodial_seriers(table.id,index, cell_initial_value, amplitude, time, period_value, model, iteration);
+                }else if(model == "Lognormal"){
+                    var standard_deviation = parseFloat(table.rows[i].cells[6].innerHTML.split(":")[1]);
+                    Add_Lognormal_seriers(table.id,index, cell_initial_value, standard_deviation, time, period_value, model, iteration);
+                }
+            };
+            optionAttenuator.series = [];
+            optionAttenuator.legend["data"] = [];
+            for (let i = 0; i <Object.keys(seriers_data).length;i++){
+                push_cell_model(Object.keys(seriers_data)[i]);
+            }
+
+        } 
+        //删除行  
+        function DeleteRow(table, index){  
+            for(var i=table.rows.length - 1; i>0;i--){  
+                var chkOrder = table.rows[i].cells[0].firstChild;  
+                if(chkOrder){  
+                    if(chkOrder.type = "CHECKBOX"){  
+                        if(chkOrder.checked){  
+                            //执行删除  
+                            table.deleteRow(i);
+                        } ; 
+                    };  
+                } ; 
+            } ;
+            Deltedata(table);
+        } 
+
+        function Deltedata(table){
+            auttenuator_chart.clear();
+            seriers_data[table.id] = {};
+            for (let i = 1; i < table.rows.length; i++){
+                if(table.rows[i].cells[1].innerHTML =! i-1){
+                    table.rows[i].cells[1].innerHTML = i-1;
+                }
+                let index = table.rows[i].cells[1].innerHTML;
+                let model = table.rows[i].cells[2].innerHTML;
+                let cell_initial_value = parseFloat(table.rows[i].cells[3].innerHTML);
+                let time = parseFloat(table.rows[i].cells[4].innerHTML);
+                let period_value = parseFloat(table.rows[i].cells[5].innerHTML);
+                let iteration = parseFloat(table.rows[i].cells[7].innerHTML);
+                if (["Triangle","Sawtooth"].includes(model)){
+                    let cell_end_value = parseFloat(table.rows[i].cells[6].innerHTML.split(":")[1]);
+                    Add_seriers(table.id,index, cell_initial_value, cell_end_value, time, period_value, model, iteration);
+                }else if (model == "Sinusoidal"){
+                    let amplitude = parseFloat(table.rows[i].cells[6].innerHTML.split(":")[1]);
+                    Add_Sinusodial_seriers(table.id,index, cell_initial_value, amplitude, time, period_value, model, iteration);
+                }else if(model == "Lognormal"){
+                    var standard_deviation = parseFloat(table.rows[i].cells[6].innerHTML.split(":")[1]);
+                    Add_Lognormal_seriers(table.id,index, cell_initial_value, standard_deviation, time, period_value, model, iteration);
+                }
+            };
+            optionAttenuator.series = [];
+            optionAttenuator.legend["data"] = [];
+            for (let i = 0; i <Object.keys(seriers_data).length;i++){
+                push_cell_model(Object.keys(seriers_data)[i]);
+            }
+            
+        }
+
+        seriers_data = {};
+        function Add_seriers(cell_id,index, cell_initial_value, cell_end_value, time, period_value, model, iteration){
+            if(!seriers_data[cell_id]){
+                seriers_data[cell_id]={}
+            };
+            if(!seriers_data[cell_id][index]){
+                seriers_data[cell_id][index] = {};
+            };
+            if (index == 0){
+                seriers_data[cell_id][index]["start_time"] = 0;
+                seriers_data[cell_id][index]["period_value"] = period_value;
+            }else{
+                seriers_data[cell_id][index]["start_time"] = seriers_data[cell_id][index-1]["period_value"]+(seriers_data[cell_id][index-1]["period_value"]-
+                seriers_data[cell_id][index-1]["start_time"])*(seriers_data[cell_id][index-1]["iteration"]-1);
+                seriers_data[cell_id][index]["period_value"] = seriers_data[cell_id][index]["start_time"] + period_value;
+            }
+            seriers_data[cell_id][index]["time"] = time;
+            seriers_data[cell_id][index]["model"] = model
+            seriers_data[cell_id][index]["cell_initial_value"] = cell_initial_value;
+            seriers_data[cell_id][index]["cell_end_value"] = cell_end_value;
+            seriers_data[cell_id][index]["iteration"] = iteration;
+            
+        }
+        function Add_Sinusodial_seriers(cell_id,index, cell_initial_value, amplitude, time, period_value, model, iteration){
+            if(!seriers_data[cell_id]){
+                seriers_data[cell_id]={}
+            };
+            if(!seriers_data[cell_id][index]){
+                seriers_data[cell_id][index] = {};
+            };
+            if (index == 0){
+                seriers_data[cell_id][index]["start_time"] = 0;
+                seriers_data[cell_id][index]["period_value"] = period_value;
+            }else{
+                seriers_data[cell_id][index]["start_time"] = seriers_data[cell_id][index-1]["period_value"]+(seriers_data[cell_id][index-1]["period_value"]-
+                seriers_data[cell_id][index-1]["start_time"])*(seriers_data[cell_id][index-1]["iteration"]-1);
+                seriers_data[cell_id][index]["period_value"] = seriers_data[cell_id][index]["start_time"] + period_value;
+            }
+            seriers_data[cell_id][index]["time"] = time;
+            seriers_data[cell_id][index]["model"] = model
+            seriers_data[cell_id][index]["cell_initial_value"] = cell_initial_value;
+            seriers_data[cell_id][index]["amplitude"] = amplitude;
+            seriers_data[cell_id][index]["iteration"] = iteration;
+            
+        }
+        function Add_Lognormal_seriers(cell_id,index, cell_initial_value, standard_deviation, time, period_value, model, iteration){
+            if(!seriers_data[cell_id]){
+                seriers_data[cell_id]={}
+            };
+            if(!seriers_data[cell_id][index]){
+                seriers_data[cell_id][index] = {};
+            };
+            if (index == 0){
+                seriers_data[cell_id][index]["start_time"] = 0;
+                seriers_data[cell_id][index]["period_value"] = period_value;
+            }else{
+                seriers_data[cell_id][index]["start_time"] = seriers_data[cell_id][index-1]["period_value"]+(seriers_data[cell_id][index-1]["period_value"]-
+                seriers_data[cell_id][index-1]["start_time"])*(seriers_data[cell_id][index-1]["iteration"]-1);
+                seriers_data[cell_id][index]["period_value"] = seriers_data[cell_id][index]["start_time"] + period_value;
+            }
+            seriers_data[cell_id][index]["time"] = time;
+            seriers_data[cell_id][index]["model"] = model
+            seriers_data[cell_id][index]["cell_initial_value"] = cell_initial_value;
+            seriers_data[cell_id][index]["standard_deviation"] = standard_deviation;
+            seriers_data[cell_id][index]["iteration"] = iteration;
+            
+        }
+        function ModifyRow(table, i){
+            if (button_model =="Triangle"){
+                var _form = document.getElementById("Triangle");
+                var inputs = _form.getElementsByTagName("input");
+                table.rows[i].cells[2].innerHTML = button_model;
+                table.rows[i].cells[3].innerHTML = parseFloat(inputs[0].value);
+                table.rows[i].cells[4].innerHTML = parseFloat(inputs[2].value);
+                table.rows[i].cells[5].innerHTML = parseFloat(inputs[3].value);
+                table.rows[i].cells[6].innerHTML = `差点信号:${parseFloat(inputs[1].value)}`;
+                table.rows[i].cells[7].innerHTML = parseFloat(inputs[4].value);
+   
+                
+                // document.getElementById("Triangle").reset();
+            }else if(button_model =="Sawtooth"){
+                var _form = document.getElementById("Triangle");
+                var inputs = _form.getElementsByTagName("input");
+                table.rows[i].cells[2].innerHTML = button_model;
+                table.rows[i].cells[3].innerHTML = parseFloat(inputs[0].value);
+                table.rows[i].cells[4].innerHTML = parseFloat(inputs[2].value);
+                table.rows[i].cells[5].innerHTML = parseFloat(inputs[3].value);
+                table.rows[i].cells[6].innerHTML = `差点信号:${parseFloat(inputs[1].value)}`;
+                table.rows[i].cells[7].innerHTML = parseFloat(inputs[4].value);
+               
+            }
+            else if(button_model == "Sinusoidal"){
+                var _form = document.getElementById("Sinusoidal");
+                var inputs = _form.getElementsByTagName("input");
+                table.rows[i].cells[2].innerHTML = button_model;
+                table.rows[i].cells[3].innerHTML = parseFloat(inputs[0].value);
+                table.rows[i].cells[4].innerHTML = parseFloat(inputs[2].value);
+                table.rows[i].cells[5].innerHTML = parseFloat(inputs[3].value);
+                table.rows[i].cells[6].innerHTML = `振幅:${parseFloat(inputs[1].value)}`;
+                table.rows[i].cells[7].innerHTML = parseFloat(inputs[4].value);
+               
+
+            }else if(button_model == "Lognormal"){
+                var _form = document.getElementById("Lognormal");
+                var inputs = _form.getElementsByTagName("input");
+                table.rows[i].cells[2].innerHTML = button_model;
+                table.rows[i].cells[3].innerHTML = parseFloat(inputs[0].value);
+                table.rows[i].cells[4].innerHTML = parseFloat(inputs[2].value);
+                table.rows[i].cells[5].innerHTML = parseFloat(inputs[3].value);
+                table.rows[i].cells[6].innerHTML = `标准偏差:${parseFloat(inputs[1].value)}`;
+                table.rows[i].cells[7].innerHTML = parseFloat(inputs[4].value);
+               
+            }
+            // auttenuator_chart.clear();
+        }
+        function AddRow(table){
+            var index = table.rows.length-1
+            if (button_model =="Triangle"){
+                var _form = document.getElementById("Triangle");
+                var inputs = _form.getElementsByTagName("input");
+                var cell_initial_value = parseFloat(inputs[0].value);
+                var cell_end_value = parseFloat(inputs[1].value);
+                var time = parseFloat(inputs[2].value);
+                var period_value = parseFloat(inputs[3].value);
+                var iteration = parseFloat(inputs[4].value);
+                var model = button_model;
+                var newRow = $(table).append(
+                $("<tr></tr>").append(
+                    $("<td></td>").html('<input type="checkbox" value="checkbox" checked="checked"/>'),
+                    $("<td></td>").text(index),
+                    $("<td></td>").text(model),
+                    $("<td></td>").text(cell_initial_value),
+                    $("<td></td>").text(time),
+                    $("<td></td>").text(period_value),
+                    $("<td></td>").text("差点信号:"+cell_end_value),
+                    $("<td></td>").text(iteration),
+                )
+               
+                )
+                Add_seriers(table.id,index, cell_initial_value, cell_end_value, time, period_value, model, iteration);
+                // document.getElementById("Triangle").reset();
+            }else if(button_model =="Sawtooth"){
+                var _form = document.getElementById("Triangle");
+                var inputs = _form.getElementsByTagName("input");
+                var cell_initial_value = parseFloat(inputs[0].value);
+                var cell_end_value = parseFloat(inputs[1].value);
+                var time = parseFloat(inputs[2].value);
+                var period_value = parseFloat(inputs[3].value);
+                var iteration = parseFloat(inputs[4].value);
+                var model = button_model;
+                var newRow = $(table).append(
+                $("<tr></tr>").append(
+                    $("<td></td>").html('<input type="checkbox" value="checkbox" checked="checked"/>'),
+                    $("<td></td>").text(index),
+                    $("<td></td>").text(model),
+                    $("<td></td>").text(cell_initial_value),
+                    $("<td></td>").text(time),
+                    $("<td></td>").text(period_value),
+                    $("<td></td>").text("差点信号:"+cell_end_value),
+                    $("<td></td>").text(iteration),
+                )
+                
+                )
+                Add_seriers(table.id,index, cell_initial_value, cell_end_value, time, period_value, model, iteration);
+                // document.getElementById("Triangle").reset();
+            }
+            else if(button_model == "Sinusoidal"){
+                var _form = document.getElementById("Sinusoidal");
+                var inputs = _form.getElementsByTagName("input");
+                var cell_initial_value = parseFloat(inputs[0].value);
+                var amplitude = parseFloat(inputs[1].value);
+                var time = parseFloat(inputs[2].value);
+                var period_value = parseFloat(inputs[3].value);
+                var iteration = parseFloat(inputs[4].value);
+                var model = button_model;
+                var newRow = $(table).append(
+                $("<tr></tr>").append(
+                    $("<td></td>").html('<input type="checkbox" value="checkbox" checked="checked"/>'),
+                    $("<td></td>").text(index),
+                    $("<td></td>").text(model),
+                    $("<td></td>").text(cell_initial_value),
+                    $("<td></td>").text(time),
+                    $("<td></td>").text(period_value),
+                    $("<td></td>").text("振幅:"+amplitude),
+                    $("<td></td>").text(iteration),
+                )
+                
+                )
+                Add_Sinusodial_seriers(table.id,index, cell_initial_value,amplitude, time, period_value, model, iteration);
+                // document.getElementById("Sinusoidal").reset();
+
+            }else if(button_model == "Lognormal"){
+                var _form = document.getElementById("Lognormal");
+                var inputs = _form.getElementsByTagName("input");
+                var cell_initial_value = parseFloat(inputs[0].value);
+                var standard_deviation = parseFloat(inputs[1].value);
+                var time = parseFloat(inputs[2].value);
+                var period_value = parseFloat(inputs[3].value);
+                var iteration = parseFloat(inputs[4].value);
+                var model = button_model;
+                var newRow = $(table).append(
+                $("<tr></tr>").append(
+                    $("<td></td>").html('<input type="checkbox" value="checkbox" checked="checked"/>'),
+                    $("<td></td>").text(index),
+                    $("<td></td>").text(model),
+                    $("<td></td>").text(cell_initial_value),
+                    $("<td></td>").text(time),
+                    $("<td></td>").text(period_value),
+                    $("<td></td>").text("标准偏差:"+standard_deviation),
+                    $("<td></td>").text(iteration),
+                )
+                
+                )
+                Add_Lognormal_seriers(table.id,index, cell_initial_value,standard_deviation, time, period_value, model, iteration);
+                // document.getElementById("Lognormal").reset();
+
+            }
+            // auttenuator_chart.clear();
+            push_cell_model(table.id);
+            if (button_model =="Sawtooth"){
+                var _form = document.getElementById("Triangle");
+                var inputs = _form.getElementsByTagName("input");
+                inputs[0].value = cell_end_value;
+                inputs[1].value = cell_end_value - 30;
+                var _form = document.getElementById("Sinusoidal");
+                var inputs = _form.getElementsByTagName("input");
+                inputs[0].value = cell_end_value;
+                var _form = document.getElementById("Lognormal");
+                var inputs = _form.getElementsByTagName("input");
+                inputs[0].value = cell_end_value;
+            }else{
+                var _form = document.getElementById("Triangle");
+                var inputs = _form.getElementsByTagName("input");
+                inputs[0].value = cell_initial_value;
+                var _form = document.getElementById("Sinusoidal");
+                var inputs = _form.getElementsByTagName("input");
+                inputs[0].value = cell_initial_value;
+                var _form = document.getElementById("Lognormal");
+                var inputs = _form.getElementsByTagName("input");
+                inputs[0].value = cell_initial_value;
+            }
+
+        }
+
+        function push_cell_model(cell_id){ 
+            auttenuator_chart.clear();      
+            optionAttenuator.legend["data"] = [];
+            var option = optionAttenuator;
+            option.series = [];
+            auttenuator_value = {};
+            if(!cell_id_list.includes(cell_id)){
+                cell_id_list.push(cell_id);
+            }
+            for (let cell_id of cell_id_list){
+                auttenuator_value[cell_id]=[];
+                for (let i= 0; i < Object.keys(seriers_data[cell_id]).length; i++){
+                var key = Object.keys(seriers_data[cell_id])[i];
+                var val = seriers_data[cell_id][key];
+                auttenuator_value["time"] = val.time;
+                if(val.model =="Triangle"){
+                    var series_data = Triangle(cell_id, val.start_time,val.cell_initial_value, val.cell_end_value, val.time, val.period_value, val.iteration);
+                    var res = new TrianglersrpModel(series_data, `${val.model}:${cell_id}:${i}`, 'line');
+                }else if(val.model =="Sinusoidal"){
+                    var series_data = Sinusoidal(cell_id, val.start_time,val.cell_initial_value,val.amplitude, val.time, val.period_value, val.iteration);
+                    var res = new SinusoidalrsrpModel(series_data, `${val.model}:${cell_id}:${i}`, 'line');
+                }else if(val.model == "Sawtooth"){
+                    var series_data = Sawtooth(cell_id, val.start_time,val.cell_initial_value, val.cell_end_value, val.time, val.period_value, val.iteration);
+                    var res = new SawtoothrsrpModel(series_data, `${val.model}:${cell_id}:${i}`, 'line');
+                }else if(val.model == "Lognormal"){
+                    var series_data = Lognormal(cell_id, val.start_time,val.cell_initial_value,val.standard_deviation, val.time, val.period_value, val.iteration);
+                    var res = new SinusoidalrsrpModel(series_data, `${val.model}:${cell_id}:${i}`, 'line');
+                }
+                option.series.push(res);
+                option.legend["data"].push(`${val.model}:${cell_id}:${i}`)
+                }
+            }
+            auttenuator_chart.setOption(optionAttenuator);
+        };
+        
+        function Sawtooth(cell_id, start_time,cell_initial_value, cell_end_value, interval_time, period_value, iteration){
+            var series_data = new Array();
+            var duration = period_value-start_time;
+            for(let i=0;i<iteration;i++){
+                if (i!=0){
+                    start_time+=duration;
+                    period_value+=duration;
+                }
+                var current_rsrp = cell_initial_value;
+                var rsrp_number = (period_value-start_time)/interval_time;
+                var rsrp_range = Math.abs(cell_end_value) -Math.abs(cell_initial_value);
+                var rsrp_step = rsrp_range/rsrp_number;
+                for (let time = start_time; time<= period_value; time+=interval_time){
+                    if (time == start_time){
+                        series_data.push([time,current_rsrp]);
+                        auttenuator_value[cell_id].push(-58-current_rsrp)
+                    }else if(time == period_value){
+                        series_data.push([time,cell_end_value]);
+                        auttenuator_value[cell_id].push(-58-cell_end_value)
+                    }
+                    else{
+                        current_rsrp = parseFloat((current_rsrp-rsrp_step).toFixed(4));
+                        series_data.push([time,current_rsrp]);
+                        auttenuator_value[cell_id].push(-58-current_rsrp)
+                    }
+                }
+            }
+            return series_data
+        };
+
+        function Sinusoidal(cell_id, start_time, cell_initial_value, end_value, interval_time, period_value, iteration){
+            var series_data = new Array();
+            var duration = period_value-start_time;
+            for(let i=0;i<iteration;i++){
+                if (i!=0){
+                    start_time+=duration;
+                    period_value+=duration;
+                }
+                for (let time = start_time; time<= period_value; time+=interval_time){
+                let x = (time-start_time) 
+                let y = Math.sin(x*2* Math.PI / (period_value-start_time)) * end_value;
+                let rsrp_value = parseFloat((cell_initial_value-y).toFixed(2))
+                if (time == start_time){
+                    var end_rsrp = rsrp_value;
+                    series_data.push([time,cell_initial_value])
+                    auttenuator_value[cell_id].push(-58-cell_initial_value)
+                }else if (time == period_value){
+                    series_data.push([time,parseFloat(end_rsrp)])
+                    auttenuator_value[cell_id].push(-58-end_rsrp)
+                }else{
+                    series_data.push([time,rsrp_value])
+                    auttenuator_value[cell_id].push(Math.round((-58-rsrp_value)*100)/100)  
+                }
+            }
+            }
+            return series_data
+        };
+        function Triangle(cell_id, start_time, cell_initial_value, cell_end_value,  interval_time, period_value, iteration){
+            var series_data = new Array();
+            var duration = period_value-start_time;
+            for(let i=0;i<iteration;i++){
+                if (i!=0){
+                    start_time+=duration;
+                    period_value+=duration;
+                }
+                var current_rsrp = cell_initial_value;
+                var rsrp_number = ((period_value-start_time)/2)/interval_time;
+                var rsrp_range = Math.abs(cell_end_value) -Math.abs(cell_initial_value) ;
+                var rsrp_step = rsrp_range/rsrp_number;
+                var mid_time = period_value - (period_value-start_time)/2
+                for(let time = start_time; time < mid_time; time+=interval_time){
+                    if (time == start_time){
+                        series_data.push([time,current_rsrp]);
+                        auttenuator_value[cell_id].push(-58-current_rsrp)
+                    }else{
+                        current_rsrp = parseFloat((current_rsrp-rsrp_step).toFixed(4));
+                        series_data.push([time,current_rsrp]);
+                        auttenuator_value[cell_id].push(-58-current_rsrp)
+                    }
+                }
+                var current_rsrp = cell_end_value;
+                for(let time = mid_time; time <= period_value; time+=interval_time){
+                    if(time == period_value){
+                        series_data.push([time,cell_initial_value]);
+                        auttenuator_value[cell_id].push(-58-cell_initial_value)
+                    }
+                    else{
+                        series_data.push([time,current_rsrp]);
+                        auttenuator_value[cell_id].push(-58-current_rsrp)
+                    }
+                    current_rsrp = parseFloat((current_rsrp+rsrp_step).toFixed(4)); 
+                }    
+            }
+            return series_data
+           
+        };
+        function Lognormal(cell_id, start_time, cell_initial_value, standard_deviation, interval_time, period_value, iteration) { 
+            var series_data = new Array();  
+            var duration = period_value-start_time;
+
+            //正态分布函数      
+            function gaussianRandom(start, end) {        
+            return Math.floor(start + gaussianRand() * (end - start + 1));       
+            //更偏向于中间的值乘以前后的差，加上前面的值，得到更偏向于中间的最终值      
+            }    
+            function gaussianRand() {      
+                var rand = 0;      
+                for (var i = 0; i < standard_deviation; i += 1) {        
+                    rand += Math.random();      }      
+                    return rand / standard_deviation;    
+            } 
+                    // n个随机数取平均值得一个更偏向于中间的值。    ////////////////////////////   
+            for(let i=0;i<iteration;i++){
+                if (i!=0){
+                    start_time+=duration;
+                    period_value+=duration;
+                }
+                let leftWeights = [];    
+                for (let i = 0; i < (period_value-start_time); i+=interval_time) {     
+                    leftWeights.push(gaussianRandom(cell_initial_value, cell_initial_value - standard_deviation*2));        
+                    }    
+                for (let i =start_time; i <=period_value; i+=interval_time){
+                    if (i == start_time || i == period_value){
+                        series_data.push([i,cell_initial_value])
+                        auttenuator_value[cell_id].push(-58-cell_initial_value)
+                    }else{
+                        series_data.push([i,leftWeights[(i-start_time)/interval_time]])
+                        auttenuator_value[cell_id].push(-58-leftWeights[(i-start_time)/interval_time])
+                    }
+                } 
+            } 
+            return series_data
+         };
+
+        $('#cell_id').multiselect({
+            includeSelectAllOption: true,//是否现实全选
+            buttonWidth:198,  //选择框的大小
+            maxHeight: 168,
+            buttonClass: 'btn btn-primary btn-sm',//显示按钮style 
+            onDropdownShow: function (event){
+                if (cell_button){
+                    addCellId();
+                    cell_button = false;
+                }
+            },
+            buttonText:function(options, checked, select){
+                if (options.length == 0 && checked[0].length == 0) { 
+                    return "CELL ID";
+                }else{
+                    let cell_id = ["PCI41(38544)", "PCI42(38400)","PCI61(1350)","PCI55(38544)","PCI56(38400)","PCI57(38544)","PCI54(38400)","PCI62(3600)","GSM900","GSM1800"];
+                    if (options.length == 0){
+                        for (i of cell_id){
+                            document.getElementById(`tab-${i}`).style.display='none'
+                        };
+                        return "CELL ID";
+                    }else if(options.length == 8){
+                        for (i of cell_id){
+                            document.getElementById(`tab-${i}`).style.display=''
+                        };
+                    }
+                    let cell_name = new Array();
+                    for (let i = 0; i < options.length;i++){
+                        cell_name.push(options[i].label)
+                    }
+                    return cell_name
+                }
+            },
+            onChange: function(option, checked, select){
+                if(checked){
+                    document.getElementById(`tab-${option[0].label}`).style.display='';
+                }else{
+                    document.getElementById(`tab-${option[0].label}`).style.display='none';
+                }
+            } 
+        })
+        $('#profile_type').multiselect({
+            buttonWidth:188,  //选择框的大小
+            maxHeight: 300,
+            buttonClass: 'btn btn-primary btn-sm',//显示按钮style 
+            onDropdownShow: function (event){
+                if (ondropdown){
+                    addModelOption();
+                    addTrianglefrom();
+                    ondropdown = false;
+                }
+                
+            }, 
+            buttonText:function(options, checked, select){
+                if (options.length == 0 && checked[0].length == 0) { 
+                    return "Channel Model";
+                }else{
+                    if (options[0].innerText == "Triangle"){
+                        button_model = "Triangle";
+                        document.getElementById('Triangle').style.display='';
+                        document.getElementById('Sinusoidal').style.display='none';
+                        document.getElementById('Lognormal').style.display='none';
+                    }else if (options[0].innerText == "Sinusoidal"){
+                        button_model = "Sinusoidal";
+                        document.getElementById('Sinusoidal').style.display='';
+                        document.getElementById('Triangle').style.display='none';
+                        document.getElementById('Lognormal').style.display='none';
+                    }else if (options[0].innerText == "Sawtooth"){
+                        button_model = "Sawtooth";
+                        document.getElementById('Triangle').style.display='';
+                        document.getElementById('Sinusoidal').style.display='none';
+                        document.getElementById('Lognormal').style.display='none'; 
+                    }else if (options[0].innerText =="Lognormal"){
+                        button_model = "Lognormal";
+                        document.getElementById('Lognormal').style.display='';
+                        document.getElementById('Sinusoidal').style.display='none';
+                        document.getElementById('Triangle').style.display='none';
+                    }
+                    return button_model
+                }
+            },
+        });
+        function addTrianglefrom(){
+            $("#Triangle").append($("<div></div>").addClass("input-group mb-3").attr("id", "initial_signal").addClass("form-group").append(
+                        $('<label for="initial_signal"></span>').addClass("col-sm-3").addClass("control-label").text("初始信号:")).append(
+                        $("<input>").attr({ "type": "number","id": "initial_signal" ,"value":"-58"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("db")
+                        ));
+            $("#Triangle").append($("<div></div>").addClass("input-group mb-3").attr("id", "end").addClass("form-group").append(
+                        $('<label for="end"></span>').addClass("col-sm-3").addClass("control-label").text("差点信号:")).append(
+                        $("<input>").attr({ "type": "number","id": "end" ,"value":"-88"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("db")
+                        ));
+            $("#Triangle").append($("<div></div>").addClass("input-group mb-3").attr("id", "time").addClass("form-group").append(
+                        $('<label for="time"></span>').addClass("col-sm-3").addClass("control-label").text("TIME:")).append(
+                        $("<input>").attr({ "type": "number","id": "time" ,"value":"500"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("ms")
+                        ));
+            $("#Triangle").append($("<div></div>").addClass("input-group mb-3").attr("id", "period").addClass("form-group").append(
+                        $('<label for="period"></span>').addClass("col-sm-3").addClass("control-label").text("持续时间:")).append(
+                        $("<input>").attr({ "type": "number","id": "period" ,"value":"10000"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("ms")
+                        ));
+            $("#Triangle").append($("<div></div>").addClass("input-group mb-3").attr("id", "iteration").addClass("form-group").append(
+                        $('<label for="iteration"></span>').addClass("col-sm-3").addClass("control-label").text("Iteration:")).append(
+                        $("<input>").attr({ "type": "number","id": "iteration" ,"value":"1"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("n")
+                        ));
+            // document.getElementById('Triangle').style.display='none';
+            $("#Sinusoidal").append($("<div></div>").addClass("input-group mb-3").attr("id", "initial_signal").addClass("form-group").append(
+                        $('<label for="initial_signal"></span>').addClass("col-sm-3").addClass("control-label").text("初始信号:")).append(
+                        $("<input>").attr({ "type": "number","id": "initial_signal" ,"value":"-68"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("db")
+                        ));
+            $("#Sinusoidal").append($("<div></div>").addClass("input-group mb-3").attr("id", "amplitude").addClass("form-group").append(
+                        $('<label for="amplitude"></span>').addClass("col-sm-3").addClass("control-label").text("振幅:")).append(
+                        $("<input>").attr({ "type": "number","id": "amplitude" ,"value":"10"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("db")
+                        ));
+            $("#Sinusoidal").append($("<div></div>").addClass("input-group mb-3").attr("id", "time").addClass("form-group").append(
+                        $('<label for="time"></span>').addClass("col-sm-3").addClass("control-label").text("TIME:")).append(
+                        $("<input>").attr({ "type": "number","id": "time" ,"value":"500"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("ms")
+                        ));
+            $("#Sinusoidal").append($("<div></div>").addClass("input-group mb-3").attr("id", "period").addClass("form-group").append(
+                        $('<label for="period"></span>').addClass("col-sm-3").addClass("control-label").text("持续时间:")).append(
+                        $("<input>").attr({ "type": "number","id": "period" ,"value":"10000"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("ms")
+                        ));
+            $("#Sinusoidal").append($("<div></div>").addClass("input-group mb-3").attr("id", "iteration").addClass("form-group").append(
+                        $('<label for="iteration"></span>').addClass("col-sm-3").addClass("control-label").text("Iteration:")).append(
+                        $("<input>").attr({ "type": "number","id": "iteration" ,"value":"1"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("n")
+                        ));
+            document.getElementById('Sinusoidal').style.display='none';
+            $("#Lognormal").append($("<div></div>").addClass("input-group mb-3").attr("id", "initial_signal").addClass("form-group").append(
+                        $('<label for="initial_signal"></span>').addClass("col-sm-3").addClass("control-label").text("初始信号:")).append(
+                        $("<input>").attr({ "type": "number","id": "initial_signal" ,"value":"-58"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("db")
+                        ));
+            $("#Lognormal").append($("<div></div>").addClass("input-group mb-3").attr("id", "standard_deviation").addClass("form-group").append(
+                        $('<label for="standard_deviation"></span>').addClass("col-sm-3").addClass("control-label").text("标准偏差:")).append(
+                        $("<input>").attr({ "type": "number","id": "standard_deviation" ,"value":"10"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("db")
+                        ));
+            $("#Lognormal").append($("<div></div>").addClass("input-group mb-3").attr("id", "time").addClass("form-group").append(
+                        $('<label for="time"></span>').addClass("col-sm-3").addClass("control-label").text("TIME:")).append(
+                        $("<input>").attr({ "type": "number","id": "time" ,"value":"500"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("ms")
+                        ));
+            $("#Lognormal").append($("<div></div>").addClass("input-group mb-3").attr("id", "period").addClass("form-group").append(
+                        $('<label for="period"></span>').addClass("col-sm-3").addClass("control-label").text("持续时间:")).append(
+                        $("<input>").attr({ "type": "number","id": "period" ,"value":"10000"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("ms")
+                        ));
+            $("#Lognormal").append($("<div></div>").addClass("input-group mb-3").attr("id", "iteration").addClass("form-group").append(
+                        $('<label for="iteration"></span>').addClass("col-sm-3").addClass("control-label").text("Iteration:")).append(
+                        $("<input>").attr({ "type": "number","id": "iteration" ,"value":"1"})).append(
+                            $("<div></div>").addClass("input-group-append").append('<span></span>').addClass("input-group-text").text("n")
+                        ));
+            document.getElementById('Lognormal').style.display='none';
+
+        }
+        function addModelOption(){
+            Model_data = [{value:"Triangle",label:"Triangle"},{value:"Sinusoidal",label:"Sinusoidal"},{value:"Lognormal",label:"Lognormal"},{value:"Sawtooth",label:"Sawtooth"}]
+            $("select[id='profile_type']").multiselect('dataprovider',Model_data)
+        };
+        function addCellId(){
+            let cell_id = ["PCI41(38544)", "PCI42(38400)","PCI54(38400)","PCI55(38544)","PCI56(38400)","PCI57(38544)","PCI61(1350)","PCI62(3600)","GSM900","GSM1800"];
+            let cell_data = new Array();
+            for (i of cell_id){
+                cell_data.push({value:i,label:i})
+            }
+            $("select[id='cell_id']").multiselect('dataprovider',cell_data)    
+        }
+        </script>
+    </body>
+</html> 
